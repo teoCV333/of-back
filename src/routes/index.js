@@ -6,8 +6,8 @@ import { limiter } from '../middlewares/rateLimitMiddleware.js';
 
 const router = express.Router();
 
-router.use("/auth", authRouter);
-router.use("/user", userRouter);
-router.use("/paymethod", paymentRouter);
+router.use("/auth", limiter, authRouter);
+router.use("/user", limiter, userRouter);
+router.use("/paymethod", limiter, paymentRouter);
 
 export default router;
