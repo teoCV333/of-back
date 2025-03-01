@@ -4,7 +4,7 @@ import cors from "cors";
 import routes from "./routes/index.js";
 
 const app = express();
-const allowedOrigins = ['https://www.onlyfansgold.com', 'https://ufapi.store', 'https://www.ufapi.store', 'http://localhost:4200'];
+const allowedOrigins = ['https://www.onlyfansgold.com', 'https://onlyfansgold.com', 'https://ufapi.store', 'https://www.ufapi.store', 'http://localhost:4200'];
 
 app.use(express.urlencoded({ extended: true }));
 app.use(json());
