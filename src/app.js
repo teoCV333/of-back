@@ -4,11 +4,20 @@ import cors from "cors";
 import routes from "./routes/index.js";
 
 const app = express();
-const allowedOrigins = ['https://www.onlyfansgold.com', 'https://onlyfansgold.com', 'https://ufapi.store', 'https://www.ufapi.store', 'http://localhost:4200'];
+
+const corsOptions = {
+    origin: 'https://www.onlyfansgold.com', // Match the Nginx configuration
+    methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+    allowedHeaders: ["Content-Type", "Authorization"],
+    credentials: true, // Allow cookies if needed
+    optionsSuccessStatus: 204
+};
+
+app.use(cors(corsOptions));
 
 app.use(express.urlencoded({ extended: true }));
 app.use(json());
-app.use(cors());
+
 
 // Routes
 app.use("/api", routes);
