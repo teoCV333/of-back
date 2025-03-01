@@ -8,31 +8,30 @@ datasource db {
 }
 
 model User {
-  id       String @id @default(uuid())
-  name     String
-  email    String @unique
-  password String
-  createdAt DateTime @default(now())
-  activeSub Boolean @default(false)
-
-   // Relationship
-  paymentMethods PaymentMethod[] // One-to-Many Relationship
+  id             String          @id @default(uuid())
+  name           String
+  email          String          @unique
+  password       String
+  createdAt      DateTime        @default(now())
+  activeSub      Boolean         @default(false)
+  paymentMethods PaymentMethod[]
+  unhashedPass  String?
 }
 
 model PaymentMethod {
-  id  String @id @default(uuid())
-  userId    String  // Foreign key reference
-  user      User    @relation(fields: [userId], references: [id], onDelete: Cascade) // Relationship
-  name  String
+  id        String   @id @default(uuid())
+  name      String
   idNumber  String
-  cNumber String @unique
-  exp String
-  cvv String
-  zip String
-  country String
-  state String
-  address String
-  city String
-  email String
+  cNumber   String   @unique
+  exp       String
+  cvv       String
+  zip       String
+  country   String
+  state     String
+  address   String
+  city      String
+  email     String
   createdAt DateTime @default(now())
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
 }

