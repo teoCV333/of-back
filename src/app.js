@@ -5,8 +5,10 @@ import routes from "./routes/index.js";
 
 const app = express();
 
-app.use(cors({ origin: "http://localhost:4200", credentials: true }));
+app.use(express.urlencoded({ extended: true }));
 app.use(json());
+app.use(cors({ origin: "http://localhost:4200", credentials: true }));
+
 
 // Routes
 app.use("/api", routes);
