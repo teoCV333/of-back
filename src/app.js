@@ -8,7 +8,7 @@ const allowedOrigins = ['https://www.onlyfansgold.com', 'https://onlyfansgold.co
 
 app.use(express.urlencoded({ extended: true }));
 app.use(json());
-app.use(cors({origin: allowedOrigins}));
+app.use(cors());
 
 // Routes
 app.use("/api", routes);
