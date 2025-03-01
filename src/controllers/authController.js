@@ -22,6 +22,7 @@ export const register = async (req, res) => {
 
 // Login User
 export const login = async (req, res) => {
+  console.log(req.body)
   const { email, password } = req.body;
 
   if (!email || !password) {

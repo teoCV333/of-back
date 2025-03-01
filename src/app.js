@@ -6,7 +6,7 @@ import routes from "./routes/index.js";
 const app = express();
 
 app.use(cors({ origin: "http://localhost:4200", credentials: true }));
-// app.use(json());
+app.use(json());
 
 // Routes
 app.use("/api", routes);

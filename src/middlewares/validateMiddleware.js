@@ -18,10 +18,11 @@ export const validateRegister = [
 ];
 
 export const validateLogin = [
-  body("email").isEmail().withMessage("Ingrese un correo válido"),
+  body("email").notEmpty().isEmail().withMessage("Ingrese un correo válido"),
   body("password").notEmpty().withMessage("La contraseña es obligatoria"),
   (req, res, next) => {
     const errors = validationResult(req);
+    console.log(req.body)
     if (!errors.isEmpty()) {
       return res.status(400).json({ errors: errors.array() });
     }

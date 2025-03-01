@@ -1,7 +1,5 @@
 import prisma from "../config/db.js";
 
-const JWT_SECRET = process.env.JWT_SECRET || "supersecret";
-
 export const getProfileService = async (user) => {
   const result = await prisma.user.findUnique({
     where: { id: user.id },
