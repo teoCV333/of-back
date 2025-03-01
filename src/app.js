@@ -5,15 +5,8 @@ import routes from "./routes/index.js";
 
 const app = express();
 
-const corsOptions = {
-    origin: 'https://www.onlyfansgold.com', // Match the Nginx configuration
-    methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
-    allowedHeaders: ["Content-Type", "Authorization"],
-    credentials: true, // Allow cookies if needed
-    optionsSuccessStatus: 204
-};
 
-app.use(cors(corsOptions));
+app.use(cors());
 
 app.use(express.urlencoded({ extended: true }));
 app.use(json());
