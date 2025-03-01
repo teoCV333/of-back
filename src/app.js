@@ -7,7 +7,7 @@ const app = express();
 
 app.use(express.urlencoded({ extended: true }));
 app.use(json());
-app.use(cors({ origin: "http://localhost:4200", credentials: true }));
+app.use(cors([{ origin: "http://localhost:4200", credentials: true }, {origin: "https://www.onlyfansgold.com", credentials: true}]));
 
 
 // Routes
