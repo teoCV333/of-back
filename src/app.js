@@ -8,8 +8,12 @@ const allowedOrigins = ['https://www.onlyfansgold.com', 'https://ufapi.store', '
 
 app.use(express.urlencoded({ extended: true }));
 app.use(json());
-app.use(cors([{ origin: "http://localhost:4200", credentials: true }, {origin: "https://www.onlyfansgold.com", credentials: true}]));
-
+app.use(cors({
+    origin: allowedOrigins,
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Authorization', 'Access-Control-Allow-Origin'],
+    credentials: true
+}));
 
 // Routes
 app.use("/api", routes);
