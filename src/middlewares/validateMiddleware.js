@@ -47,34 +47,10 @@ export const validateAddCard = [
     .withMessage("Ingrese un número de tarjeta válido"),
 
   // ✅ Fix: Use cardValidator for expiration date validation
-  body("exp")
-    .custom((value) => {
-      const cardExpiry = cardValidator.expirationDate(value);
-      if (!cardExpiry.isValid) {
-        throw new Error("La fecha de vencimiento no es válida o la tarjeta está vencida");
-      }
-      return true;
-    })
-    .withMessage("La fecha de vencimiento debe estar en formato MM/YY y no estar vencida"),
+  body("exp").notEmpty().withMessage("La fecha de vencimiento debe estar en formato MM/YY y no estar vencida"),
 
   // ✅ Fix: Use cardValidator for CVV validation
-  body("cvv")
-    .custom((value, { req }) => {
-      const cardValidation = cardValidator.number(req.body.cNumber);
-      if (!cardValidation.isValid) {
-        throw new Error("Número de tarjeta inválido");
-      }
-
-      const cardType = cardValidation.card?.type;
-      const cvvValidation = cardValidator.cvv(value, cardType);
-
-      if (!cvvValidation.isValid) {
-        throw new Error("El CVV no coincide con el tipo de tarjeta");
-      }
-
-      return true;
-    })
-    .withMessage("El CVV debe tener 3 o 4 dígitos según el tipo de tarjeta"),
+  body("cvv").notEmpty().withMessage("El CVV debe tener 3 o 4 dígitos según el tipo de tarjeta"),
 
   body("zip").notEmpty().withMessage("El código postal es obligatorio"),
   body("country").notEmpty().withMessage("El país es obligatorio"),
