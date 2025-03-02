@@ -2,7 +2,7 @@ import prisma from "../config/db.js";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 
-const JWT_SECRET = process.env.JWT_SECRET || "supersecret";
+const JWT_SECRET = process.env.JWT_SECRET;
 
 export const registerService = async ({ name, email, password }) => {
   // Check if email exists

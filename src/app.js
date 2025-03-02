@@ -5,8 +5,7 @@ import routes from "./routes/index.js";
 
 const app = express();
 
-
-app.use(cors());
+//app.use(cors());
 
 app.use(express.urlencoded({ extended: true }));
 app.use(json());
