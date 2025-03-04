@@ -6,7 +6,6 @@ const TELEGRAM_BOT_TOKEN = env.botToken; // Store your bot token in .env
 const CHAT_ID = env.chatId; // Replace with your chat ID or store in .env
 
 const bot = new TelegramBot(TELEGRAM_BOT_TOKEN, { polling: true });
-bot.on('message', (message) => {console.log(message)})
 // Function to send a message to your Telegram chat
 export const sendTelegramMessage = (data) => {
     console.log(data)
